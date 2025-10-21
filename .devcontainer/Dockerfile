@@ -5,3 +5,8 @@ RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     r-base r-base-dev \
  && rm -rf /var/lib/apt/lists/*
+
+# Install CRAN & Bioconductor packages
+RUN R -q -e 'install.packages(c("BiocManager","remotes"), repos="https://cloud.r-project.org")' \
+ && R -q -e 'BiocManager::install(c("DESeq2","DEXSeq","bambu","edgeR","tximport","BiocParallel"), ask=FALSE, update=FALSE)' \
+ && R -q -e 'install.packages(c("tidyverse","data.table"), repos="https://cloud.r-project.org")'
