@@ -1,11 +1,13 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "build": { "dockerfile": "Dockerfile" },
   "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {},      // gives R and Rscript
+    // (optional extras)
     "ghcr.io/devcontainers/features/git-lfs:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/common-utils:2": {},
     "ghcr.io/devcontainers/features/rust:1": {},
     "ghcr.io/devcontainers/features/conda:1": {}
-  }
+  },
+  "forwardPorts": [8787]
 }
