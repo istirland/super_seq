@@ -1,5 +1,4 @@
 {
-  {
   "build": { "dockerfile": "Dockerfile" },
   "features": {
     "ghcr.io/devcontainers/features/git-lfs:1": {},
