@@ -8,5 +8,8 @@ RUN apt-get update \
 
 # Install CRAN & Bioconductor packages
 RUN R -q -e 'install.packages(c("BiocManager","remotes"), repos="https://cloud.r-project.org")' \
- && R -q -e 'BiocManager::install(c("DESeq2","DEXSeq","bambu","edgeR","tximport","BiocParallel"), ask=FALSE, update=FALSE)' \
+ && R -q -e 'BiocManager::install(c("DESeq2","edgeR","tximport","BiocParallel"), ask=FALSE, update=FALSE)' \
  && R -q -e 'install.packages(c("tidyverse","data.table"), repos="https://cloud.r-project.org")'
+RUN R -q -e 'BiocManager::install("DEXSeq", dependencies=TRUE, ask=FALSE, update=FALSE)'
+RUN R -q -e 'BiocManager::install("bambu",  dependencies=TRUE, ask=FALSE, update=FALSE)'
+RUN R -q -e 'install.packages(c("tidyverse","data.table"), repos="https://cloud.r-project.org")'
